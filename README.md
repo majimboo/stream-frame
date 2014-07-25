@@ -1,7 +1,7 @@
-stream-frame [![Build Status](https://travis-ci.org/majimboo/stream-frame.svg?branch=master)](https://travis-ci.org/majimboo/stream-frame)
+StreamFrame [![Build Status](https://travis-ci.org/majimboo/stream-frame.svg?branch=master)](https://travis-ci.org/majimboo/stream-frame)
 ====
 
-stream-frame is a stream framing library for node.js.
+StreamFrame is a stream framing library for node.js.
 
 Installing
 ----
@@ -11,10 +11,11 @@ Installing
 Usage
 ----
 
-    var B = require('stream-frame');
+    var StreamFrame = require('stream-frame');
+    var B = StreamFrame();
 
     var server = net.createServer(function(socket) {
-      socket.pipe(B);
+      B.wrap(socket);
 
       B.on('data', function(msg) {
         // your framed msg is here
@@ -29,7 +30,8 @@ Configuration
 
 ----
 
-    var B = require('stream-frame');
+    var StreamFrame = require('stream-frame');
+    var B = StreamFrame();
 
     B.set('lengthSize', 1); // uint8
     B.set('lengthSize', 2); // uint16LE
