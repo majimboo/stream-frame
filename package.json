@@ -1,0 +1,28 @@
+{
+  "name": "stream-frame",
+  "version": "0.0.1",
+  "description": "TCP stream framer for Node.JS",
+  "directories": {
+    "lib": "./lib/stream-frame"
+  },
+  "main": "./index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": "majimboo/stream-frame",
+  "keywords": [
+    "tcp",
+    "net",
+    "boundery",
+    "framing",
+    "stream",
+    "separator"
+  ],
+  "author": "Majid Arif Siddiqui <me@majidarif.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1"
+  }
+}
