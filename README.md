@@ -1,6 +1,8 @@
 StreamFrame [![Build Status](https://travis-ci.org/majimboo/stream-frame.svg?branch=master)](https://travis-ci.org/majimboo/stream-frame)
 ====
 
+[![NPM](https://nodei.co/npm/stream-frame.png?downloads=true)](https://nodei.co/npm/stream-frame/)
+
 StreamFrame is a stream framing library for node.js.
 
 Installing
