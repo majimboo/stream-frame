@@ -1,6 +1,6 @@
 {
   "name": "stream-frame",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "TCP stream framer for Node.JS",
   "directories": {
     "lib": "./lib/stream-frame"
