@@ -5,50 +5,58 @@ StreamFrame [![Build Status](https://travis-ci.org/majimboo/stream-frame.svg?bra
 
 StreamFrame is a stream framing library for node.js.
 
-Installing
-----
+Install
+-------
 
     npm install stream-frame --save
 
+Installing the latest version
+
+    $ npm install git+https://github.com/majimboo/stream-frame.git
+
 Usage
-----
+-----
 
     var StreamFrame = require('stream-frame');
-    var B = StreamFrame();
 
-    var server = net.createServer(function(socket) {
+    var server = net.createServer(function (socket) {
+      var B = new StreamFrame();
       B.wrap(socket);
 
-      B.on('data', function(msg) {
-        // your framed msg is here
+      B.on('data', function(data) {
+        console.log(data);
       });
     });
 
-Configuration
-----
+You can also pass the socket as a parameter of `StreamFrame()`.
 
-* lengthSize (default: 2) - The length in bytes of the prepended message size.
-* endianness (default: little) - The byte order of the prepended length.
+    var B = new StreamFrame(socket);
+    B.on('data', data_handler);
 
-----
+Options
+-------
 
-    var StreamFrame = require('stream-frame');
-    var B = StreamFrame();
+* lengthSize (default: 2)     - The length in bytes of the prepended message size.
+* bigEndian  (default: false) - The byte order of the prepended length.
 
-    B.set('lengthSize', 1); // uint8
-    B.set('lengthSize', 2); // uint16LE
-    B.set('lengthSize', 4); // uint32LE
+```
+var StreamFrame = require('stream-frame');
+var B = new StreamFrame();
 
-    B.set(B.uint8);   // uint8
-    B.set(B.uint16L); // uint16LE
-    B.set(B.uint32L); // uint32LE
-    B.set(B.uint16B); // uint16BE
-    B.set(B.uint32B); // uint32BE
+B.set('lengthSize', 1); // uint8
+B.set('lengthSize', 2); // uint16
+B.set('lengthSize', 4); // uint32
 
+B.set('bigEndian', true);  // uses bigEndian order
+B.set('bigEndian', false); // uses default little endian order
+```
 
-TODO
-----
+Benchmark
+---------
 
-- Support specified endianness
-- More test
-- Improve code
+    v 0.0.3
+    StreamFrame x 623,238 ops/sec ±1.72% (87 runs sampled)
+
+    v 0.0.4
+    StreamFrame x 886,578 ops/sec ±0.56% (90 runs sampled)
+

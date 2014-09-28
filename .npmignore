@@ -1,3 +1,8 @@
 node_modules/
 .DS_Store
 test/
+.jshintrc
+.travis.yml
+.jscs.json
+.gitingore
+benchmark/
