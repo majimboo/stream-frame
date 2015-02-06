@@ -1,7 +1,7 @@
 'use strict';
 
 var should = require('should');
-var net = require('net');
+var net    = require('net');
 var StreamFrame = require('../');
 
 describe('StreamFrame', function () {
