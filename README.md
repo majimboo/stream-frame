@@ -38,6 +38,8 @@ Options
 
 * lengthSize (default: 2)     - The length in bytes of the prepended message size.
 * bigEndian  (default: false) - The byte order of the prepended length.
+* offset     (default: 0)     - The offset where the packet size can be found.
+* ignore     (default: false) - Will not try to frame the message.
 
 ```
 var StreamFrame = require('stream-frame');
@@ -46,6 +48,9 @@ var B = new StreamFrame();
 B.set('lengthSize', 1); // uint8
 B.set('lengthSize', 2); // uint16
 B.set('lengthSize', 4); // uint32
+
+B.set('offset', 2);    // size starts at 3rd byte.
+B.set('ignore', true); // will emit data immedietely without framing.
 
 B.set('bigEndian', true);  // uses bigEndian order
 B.set('bigEndian', false); // uses default little endian order
